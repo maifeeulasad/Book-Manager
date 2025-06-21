@@ -11,8 +11,7 @@ export class AuthorsService {
   ) { }
 
   async create(createAuthorDto: CreateAuthorDto): Promise<Author> {
-    const createdAuthor = await this.authorModel.create(createAuthorDto);
-    return createdAuthor.save();
+    return await this.authorModel.create(createAuthorDto);
   }
 
   async findAll(options: { page: number; limit: number; search?: string }): Promise<{ data: Author[]; count: number }> {
