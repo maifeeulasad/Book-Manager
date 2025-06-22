@@ -21,9 +21,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         
     - name: 'Installing pnpm'    
-      run: npm i -g pnpm  
+      run: npm i -g pnpm
     - name: 'Installing deps'    
       run: pnpm i
+    - name: 'Run Docker Compose'
+      run: docker compose up -d
     - name: 'Run Server'
       run: pnpm start &
     - name: 'Run Tests'
