@@ -1,6 +1,6 @@
 import { MongooseModule } from "@nestjs/mongoose";
 
-const CONNECTION_STRING_FALLBACK = 'mongodb://localhost:27017/library';
+export const CONNECTION_STRING_FALLBACK = 'mongodb://root:example@localhost:27017/library?authSource=admin';
 const CONNECTION_STRING = process.env.MONGO_URI || CONNECTION_STRING_FALLBACK;
 
 if (CONNECTION_STRING === CONNECTION_STRING_FALLBACK) {
