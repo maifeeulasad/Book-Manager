@@ -12,7 +12,7 @@ import { CreateBookDto, UpdateBookDto } from "./BookDto";
 @Injectable()
 export class BooksService {
   constructor(
-    @InjectModel(Author.name) private readonly bookModel: Model<Book>,
+    @InjectModel(Book.name) private readonly bookModel: Model<Book>,
     @InjectModel(Author.name) private readonly authorModel: Model<Author>,
   ) {}
 
@@ -22,7 +22,7 @@ export class BooksService {
     }
     const author = await this.authorModel.findById(dto.author).exec();
     if (!author) {
-      throw new BadRequestException("Author not found");
+      throw new NotFoundException(`Author with ID '${dto.author}' not found`);
     }
     const created = new this.bookModel({
       title: dto.title,
@@ -70,7 +70,7 @@ export class BooksService {
     }
     const book = await this.bookModel.findById(id).populate("author").exec();
     if (!book) {
-      throw new NotFoundException("Book not found");
+      throw new NotFoundException(`Book with ID '${id}' not found`);
     }
     return book;
   }
@@ -87,7 +87,7 @@ export class BooksService {
         .exists({ _id: dto.author })
         .exec();
       if (!authorExists) {
-        throw new BadRequestException("Author not found");
+      throw new NotFoundException(`Author with ID '${dto.author}' not found`);
       }
     }
 
@@ -96,7 +96,7 @@ export class BooksService {
       .populate("author")
       .exec();
     if (!updated) {
-      throw new NotFoundException("Book not found");
+      throw new NotFoundException(`Book with ID '${id}' not found`);
     }
     return updated;
   }
@@ -107,7 +107,7 @@ export class BooksService {
     }
     const result = await this.bookModel.findByIdAndDelete(id).exec();
     if (!result) {
-      throw new NotFoundException("Book not found");
+      throw new NotFoundException(`Book with ID '${id}' not found`);
     }
   }
 }
