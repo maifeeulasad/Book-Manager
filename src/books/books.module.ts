@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
-import { BooksController } from './books.controller';
-import { BooksService } from './books.service';
-import { Book, BookSchema } from './BookSchema';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Author, AuthorSchema } from '../authors/AuthorSchema';
+import { Module } from "@nestjs/common";
+import { BooksController } from "./books.controller";
+import { BooksService } from "./books.service";
+import { Book, BookSchema } from "./BookSchema";
+import { MongooseModule } from "@nestjs/mongoose";
+import { Author, AuthorSchema } from "../authors/AuthorSchema";
 
 @Module({
   imports: [

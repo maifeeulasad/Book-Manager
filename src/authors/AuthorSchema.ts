@@ -1,22 +1,21 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Types } from "mongoose";
 
 @Schema({ timestamps: true })
 export class Author extends Document {
-
-  @Prop({ required: true }) 
+  @Prop({ required: true })
   firstName: string;
 
-  @Prop({ required: true }) 
+  @Prop({ required: true })
   lastName: string;
 
-  @Prop() 
+  @Prop()
   bio?: string;
 
-  @Prop() 
+  @Prop()
   birthDate?: Date;
-  
-  @Prop({ type: [{ type: Types.ObjectId, ref: 'Book' }] })
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: "Book" }] })
   books: Types.ObjectId[];
 }
 

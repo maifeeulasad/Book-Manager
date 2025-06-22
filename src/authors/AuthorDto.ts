@@ -1,5 +1,5 @@
-import { IsString, IsOptional, IsDateString } from 'class-validator';
-import { PartialType } from '@nestjs/mapped-types';
+import { IsString, IsOptional, IsDateString } from "class-validator";
+import { PartialType } from "@nestjs/mapped-types";
 
 export class CreateAuthorDto {
   @IsString()

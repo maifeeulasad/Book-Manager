@@ -1,6 +1,6 @@
-import { IsString, IsOptional, IsDateString, IsMongoId } from 'class-validator';
-import { PartialType } from '@nestjs/mapped-types';
-import { IsValidISBN } from './BookValidator';
+import { IsString, IsOptional, IsDateString, IsMongoId } from "class-validator";
+import { PartialType } from "@nestjs/mapped-types";
+import { IsValidISBN } from "./BookValidator";
 
 export class CreateBookDto {
   @IsString()
